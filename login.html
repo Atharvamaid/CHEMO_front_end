@@ -1,0 +1,50 @@
+{% extends 'hospitalauth/base.html'%}
+{% load static %}
+{% block content %}
+    <div class="container-fluid mt-3">
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="container">
+                    <img src="{% static 'hospitalauth/login.jpg' %}" style="max-width : 100%;">
+                </div>
+            </div>
+            <div class="col-md-6  " style="display : flex; flex-direction : column; justify-content : center;">
+                {% if messages %}
+                                {% for i in messages %}
+                                    <div class="alert alert-{{ i.tags }}">
+                                        {{ i }}
+                                    </div>
+                                {% endfor %}
+                {% endif %}
+                <div class="container-fluid ">
+                    <div class="row">
+
+                        <div class="col-md-10 bg-light rounded-lg border py-3">
+
+                            <form class="login" method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend class="mb-3" style="font-size : 30px; ">Login</legend>
+                        <div class="form-group">
+                        <label for="email">Email : </label>
+                        <input type="email" id="email" name="email" placeholder="enter email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass">Password : </label>
+                        <input type="password" id="pass" name="pass" placeholder="enter password" class="form-control" required>
+                    </div>
+                    <button class="btn my-2  btn-primary" style="width : 100px">Login</button>
+                    </fieldset>
+                </form>
+                <small>don't have an account ? <a href="{% url 'signup' %}">sign-up</a></small>
+                        </div>
+                        <div class="col-md-2">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

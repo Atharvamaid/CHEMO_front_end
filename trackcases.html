@@ -1,0 +1,40 @@
+{% extends 'hospitalauth/base.html' %}
+{% block content %}
+
+     <div class="container mt-4">
+
+            {% autoescape off %}
+              {{ plot1 }}
+            {% endautoescape %}
+
+        </div>
+ <div class="container mt-4">
+
+        {% autoescape off %}
+          {{ plot2 }}
+        {% endautoescape %}
+
+    </div>
+    <div class="container mt-4">
+
+        {% autoescape off %}
+          {{ plot3 }}
+        {% endautoescape %}
+
+    </div>
+
+    <div class="container mt-4">
+<h1>Th below graph is the forecast of Covid-19 in the next month</h1>
+        {% autoescape off %}
+          {{ plot4 }}
+        {% endautoescape %}
+
+    </div>
+<div class="container mt-4">
+<h1>Th below graph is the forecast of Covid-19 in Maharashtra</h1>
+        {% autoescape off %}
+          {{ plot5 }}
+        {% endautoescape %}
+
+    </div>
+{% endblock content %}

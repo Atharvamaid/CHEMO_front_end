@@ -1,0 +1,52 @@
+{% extends 'hospitalauth/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-md-6 pl-5">
+            <img src="{% static 'hospitalauth/signup.jpg' %}" style="max-width : 100%;">
+            </div>
+            <div class="col-md-6 mt-5">
+                {% if messages %}
+                    {% for i in messages %}
+                        <div class="alert alert-{{ i.tags }}">
+                            {{ i }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <form class="signup" method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend>Create Account</legend>
+                        <div class="form-group">
+                            <label for="hosname">Hospital Name : </label>
+                            <input type="text" class="form-control" id="hosname" name="hosname" placeholder="Enter hospital name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address : </label>
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address " required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email : </label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                        </div>
+                       <div class="form-group">
+                            <label for="pass">Password : </label>
+                            <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confpass">Confirm Password : </label>
+                            <input type="password" class="form-control" id="confpass" name="confpass" placeholder="Re-enter password" required>
+                        </div>
+                    </fieldset>
+                    <div class="">
+                        <button class="btn btn-primary" type="submit" style="width : 100px">Sign Up</button>
+                    </div>
+                    <small >Already had an account ? <a href="{% url 'login' %}">Login</a></small>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
